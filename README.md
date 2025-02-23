@@ -22,6 +22,7 @@ cd YOUR-REPO
 ## Content of dev/deployment.yaml (Example of a Deployment):
 
 
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -41,6 +42,7 @@ spec:
         image: nginx
         ports:
         - containerPort: 80
+``` 
 
 ## Explanation:
 
@@ -52,7 +54,7 @@ spec:
 
 ## Content of dev/service.yaml (Example of a Service):
 
-
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -65,7 +67,7 @@ spec:
       port: 80
       targetPort: 80
   type: ClusterIP
-
+``` 
 
 ## Explanation:
 
@@ -77,6 +79,7 @@ spec:
 ## Content of application.yml (for Argo CD):
 
 
+```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -95,6 +98,7 @@ spec:
     automated:
       prune: true
       selfHeal: true
+``` 
 
 
 ## Explanation:
