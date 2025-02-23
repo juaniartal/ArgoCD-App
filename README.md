@@ -44,11 +44,11 @@ spec:
         - containerPort: 80
 ``` 
 
-## Explanation:
+### Explanation:
 
-### Deployment: Defines how your application runs within Kubernetes.
-### replicas: 1: Indicates that one instance will be running.
-### containers: Defines the containers within the pod, in this case, using the nginx image.
+#### Deployment: Defines how your application runs within Kubernetes.
+#### replicas: 1: Indicates that one instance will be running.
+#### containers: Defines the containers within the pod, in this case, using the nginx image.
 
 
 
@@ -69,10 +69,10 @@ spec:
   type: ClusterIP
 ``` 
 
-## Explanation:
+### Explanation:
 
-### Service: Exposes the deployment within the cluster.
-### ClusterIP: Makes the service accessible internally in Kubernetes.
+#### Service: Exposes the deployment within the cluster.
+#### ClusterIP: Makes the service accessible internally in Kubernetes.
 
 
 
@@ -101,12 +101,12 @@ spec:
 ``` 
 
 
-## Explanation:
+### Explanation:
 
-### Argo CD controls this repository and automatically applies changes to Kubernetes.
-### repoURL: Defines the GitHub repository URL containing the YAML files.
-### path: Indicates the folder in the repository where the manifests (dev) are stored.
-### syncPolicy.automated: Ensures Argo CD applies changes automatically.
+#### Argo CD controls this repository and automatically applies changes to Kubernetes.
+#### repoURL: Defines the GitHub repository URL containing the YAML files.
+#### path: Indicates the folder in the repository where the manifests (dev) are stored.
+#### syncPolicy.automated: Ensures Argo CD applies changes automatically.
 
 
 ## 🔹 3. Install Argo CD
