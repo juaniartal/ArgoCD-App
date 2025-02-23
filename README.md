@@ -10,16 +10,17 @@ If you don't have a repository yet, create one on GitHub. Then, clone it to your
 git clone https://github.com/YOUR-USER/YOUR-REPO.git
 cd YOUR-REPO
 ## 🔹 2. Create the file structure
+
 Inside your repository, create a dev/ folder with two YAML files and an application.yml file at the root.
 
 mkdir dev
+
 touch dev/deployment.yaml dev/service.yaml application.yml
 
 
 👉 Content of dev/deployment.yaml (Example of a Deployment):
-yaml
-Copiar
-Editar
+
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -47,9 +48,8 @@ Explanation:
 ### containers: Defines the containers within the pod, in this case, using the nginx image.
 
 👉 Content of dev/service.yaml (Example of a Service):
-yaml
-Copiar
-Editar
+
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -70,6 +70,7 @@ Explanation:
 ### ClusterIP: Makes the service accessible internally in Kubernetes.
 
 ##👉 Content of application.yml (for Argo CD):
+
 
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -100,12 +101,15 @@ Explanation:
 
 
 ## 🔹 3. Install Argo CD
-Run these commands in WSL to install Argo CD:
+
+### Run these commands in WSL to install Argo CD:
+
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
 
 ### 🔹 4. Verify that the pods are running:
+
 kubectl get pods -n argocd
 
 
@@ -117,6 +121,7 @@ kubectl get pods -n argocd
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 
 ### Then open it in your browser:
+
 https://localhost:8080
 
 
@@ -132,9 +137,11 @@ kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.pas
 argocd login localhost:8080 --username admin --password YOUR-PASSWORD
 
 ### Create the application:
+
 kubectl apply -f application.yaml
 
 ### Or manually:
+
 argocd app create my-app \
   --repo https://github.com/YOUR-USER/YOUR-REPO.git \
   --path dev \
